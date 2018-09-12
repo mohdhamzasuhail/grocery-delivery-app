@@ -1,0 +1,148 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button (click)="goToHome()" ion-button icon-left clear small><ion-icon name="ios-arrow-back-outline"></ion-icon></button>
+    </ion-buttons>
+    <ion-title *ngIf="this.fire.auth.currentUser">
+      <b>my account</b>
+    </ion-title>
+
+    <ion-title *ngIf="!this.fire.auth.currentUser">
+      <b>account</b>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content *ngIf="this.fire.auth.currentUser">
+    <!-- If User Is Logged In -->
+
+    <div class="profile-page">
+      <h2>{{userInfo.userName}}</h2><hr>
+      <h3>{{userInfo.userEmail}}</h3>
+      <h3>+91 {{userInfo.userNumber}}</h3> 
+      <!-- <h3>Current Location: {{lat}} | {{lng}}</h3> -->
+    </div>
+
+    <div class="box">
+      
+      <ion-row (click)="manageAddress()">
+        <ion-col col-2>
+          <h2><ion-icon name="md-home"></ion-icon></h2>
+        </ion-col>
+
+        <ion-col col-10>
+          <h2>Manage Address</h2>
+        </ion-col>
+      
+      </ion-row>
+      <hr>
+      
+      <ion-row>
+        <ion-col col-2>
+          <h2><ion-icon name="md-create"></ion-icon></h2>
+        </ion-col>
+
+        <ion-col col-10>
+          <h2>Edit Profile</h2>
+        </ion-col>
+      </ion-row>
+      <hr>
+      
+      <ion-row (click)=ordersPage()>
+      
+        <ion-col col-2>
+          <h2><ion-icon name="md-timer"></ion-icon></h2>
+        </ion-col>
+
+        <ion-col col-10>
+          <h2>Orders</h2>
+        </ion-col>
+      
+      </ion-row>
+      <hr>
+      <ion-row>
+      
+        <ion-col col-2>
+          <h2><ion-icon name="md-lock"></ion-icon></h2>
+        </ion-col>
+
+        <ion-col col-10>
+          <h2>Change Password</h2>
+        </ion-col>
+      
+      </ion-row>
+      <hr>
+      <ion-row (click)="logout()">
+      
+        <ion-col col-2>
+          <h2><ion-icon name="md-log-out"></ion-icon></h2>
+        </ion-col>
+
+        <ion-col col-10>
+          <h2>Logout</h2>
+        </ion-col>
+      
+      </ion-row>
+
+      <br><br><br>
+
+    </div>
+
+
+</ion-content>  
+
+<ion-content padding *ngIf="!this.fire.auth.currentUser">
+    
+    <div class="box">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button full style="background-color: #1a1a1a;" (click)="goToLogin()">LOGIN</button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button full style="background-color: #1a1a1a;" (click)="goToRegister()">REGISTER</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+    </div>
+
+    <br>
+
+    <div class="box" *ngIf="loginOption">
+      <h1 style="text-align: center;"><b>Login</b></h1>
+      <ion-item>
+        <ion-label color="dark" floating>Email</ion-label>
+        <ion-input type="email" clearInput #email></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="dark" floating>Password</ion-label>
+        <ion-input type="password" clearInpu #password></ion-input>
+      </ion-item><br>
+      <button ion-button class="btn-custom-1" (click)="login()">GO!</button><br><br>
+    </div>
+
+    <div class="box" *ngIf="registerOption">
+      <h1 style="text-align: center;"><b>Register</b></h1>
+    
+      <ion-item>
+        <ion-label color="dark" floating>Email</ion-label>
+        <ion-input type="email" clearInput #userEmail></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label color="dark" floating>Password</ion-label>
+        <ion-input type="password" clearInput #userPassword></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" floating>Confirm Password</ion-label>
+        <ion-input type="password" clearInput #userConfirmPassword></ion-input>
+      </ion-item><br><br>
+    
+      <button ion-button class="btn-custom-1" (click)="register()">GO!</button>
+    </div>
+
+</ion-content>

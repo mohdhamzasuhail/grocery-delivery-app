@@ -1,0 +1,77 @@
+<ion-header>
+
+  <ion-toolbar>
+    <button class="home-menu" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar no-border class="search" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="account()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="totalProducts" style="position: fixed;bottom: 55px;left: 0;z-index:999999;width: 100%;background-color: #1a1a1a;padding: 10px;">
+    <ion-row style="height: 25px;color: #fff;">
+      <ion-col col-8>
+        <span *ngIf="totalProducts">{{totalProducts}} <span *ngIf="totalProducts == 1">Item</span><span *ngIf="totalProducts != 1">Items</span></span>
+      </ion-col>
+      <ion-col col-4 style="text-align: right;">
+        <span>CHECKOUT</span>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="card-background-page" style="padding-bottom: 50px;">
+  
+    <ion-row *ngIf="emptyCart" style="text-align: center;padding-top: 20%;">
+      <ion-col col-12>
+        <h1><ion-icon name="md-cart"></ion-icon></h1>
+        <p style="color: #999;">There are no items in your basket.</p>
+        <p>Enjoy great shopping experience with us!</p>
+        <button ion-button round color="custom" (tap)="goToHome()">Start Shopping</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-card *ngFor="let product of cart;let i=index">
+  
+      <ion-row>
+        <ion-col col-4>
+          <img src="{{product.productImageURL}}">
+        </ion-col>
+        <ion-col col-7>
+          
+          <p style="color: #999">{{product.productCompany}}</p>
+          <h2>{{product.productName}}</h2>
+          <p style="color: #999">{{product.quantity[productQuantityId[i]]}}</p>
+          
+          <ion-row>
+            <ion-col col-8>
+              <h3>
+                Rs {{product.productDP[productQuantityId[i]]}} 
+              </h3>
+            </ion-col>
+            <ion-col col-4>
+              <button ion-button color="dark">
+                <ion-icon name="md-remove"></ion-icon>
+                <span style="padding-left: 10px;padding-right: 10px;">{{productQuantity[i]}}</span>
+                <ion-icon name="md-add"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+        <ion-col col-1 (tap)="removeProduct(i)">
+          <ion-icon name="md-trash"></ion-icon>
+        </ion-col>
+      </ion-row>
+  
+    </ion-card>
+  </div>
+
+</ion-content>

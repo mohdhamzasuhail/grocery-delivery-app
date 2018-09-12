@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-left clear small><ion-icon name="ios-arrow-back-outline"></ion-icon></button>
+    </ion-buttons>
+    <ion-title><b>{{categoryInfo.subcategory}}</b></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+	<div class="card-background-page">
+		
+		<ion-card *ngFor="let product of products | async">
+	
+			<ion-row>
+				<ion-col col-4>
+					<img src="{{product.productImageURL}}">
+				</ion-col>
+				<ion-col col-8>
+					
+					<p style="color: #999">{{product.productCompany}}</p>
+					<h2>{{product.productName}}</h2>
+					
+					<ion-item color="light">
+					  <ion-label>Quantity</ion-label>
+					  <ion-select>
+					    <ion-option *ngFor="let q of product.quantity;let i =index" [value]="q" (ionSelect)="quantitySelected(i)">
+				    		{{q}}
+				    	</ion-option>
+					  </ion-select>
+					</ion-item>
+					
+					<ion-row>
+						<ion-col col-8>
+							<p style="color: #999">
+								MRP: 
+								<span *ngIf="quantityId == ''" style="text-decoration: line-through;">
+									Rs {{product.productOP[0]}}
+								</span>
+								<span *ngIf="quantityId != ''" style="text-decoration: line-through;">
+									Rs {{product.productOP[quantityId]}}
+								</span>
+							</p>
+							<h3>
+								<b *ngIf="quantityId == ''">
+									Rs {{product.productDP[0]}} 
+									<span style="color: green;">
+										{{product.productDiscount[0]}}% Off
+									</span>
+								</b>
+								<b *ngIf="quantityId != ''">
+									Rs {{product.productDP[quantityId]}} 
+									<span style="color: green;">
+										{{product.productDiscount[quantityId]}}% Off
+									</span>
+								</b>
+							</h3>
+						</ion-col>	
+						<ion-col col-4>
+							<button ion-button color="dark" (click)="addToCart(product.key)">ADD</button>
+						</ion-col>
+					</ion-row>
+
+				</ion-col>
+			</ion-row>
+	
+		</ion-card>
+	
+	</div>
+</ion-content>

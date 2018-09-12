@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-toolbar>
+    <button class="home-menu" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar no-border class="search" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="account()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="card-background-page">
+    <ion-card>
+      <div class="heading">
+        <h1>
+          <b>Shop by Categories</b>
+        </h1>
+      </div>
+    </ion-card>
+
+    <ion-card *ngFor="let category of categories | async">
+
+      <ion-row>
+        <ion-col col-12>
+          <h2><b>{{category.categoryName}}</b></h2>        
+        </ion-col>
+      </ion-row>
+      
+      <hr>
+
+      <div *ngFor="let subcat of category.subCategories;let i=index">
+        <ion-row (click)="showProducts(category.key,category.categoryName,i,subcat)">
+          <ion-col col-12>
+            <h2>{{subcat}}</h2>
+          </ion-col>
+        </ion-row>
+      </div>
+
+    </ion-card>
+  
+  </div>
+</ion-content>

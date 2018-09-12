@@ -1,0 +1,74 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-left clear small><ion-icon name="ios-arrow-back-outline"></ion-icon></button>
+    </ion-buttons>
+    <ion-title><b>manage address</b></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+	<ion-fab right bottom (click)="addAddressButton()">
+    <button ion-fab color="dark"><ion-icon name="md-add"></ion-icon></button>
+  </ion-fab>
+
+	<div class="card-background-page">
+		
+		<ion-card *ngFor="let address of address | async">
+			<ion-row>
+
+				<ion-col col-10>
+					<h2>{{address.userAddress}}</h2>
+        </ion-col>
+
+        <ion-col col-2>
+          <button ion-button full round style="background-color: #1a1a1a;" (click)="deleteAddress(address.key)"><ion-icon name="md-trash"></ion-icon></button>          
+        </ion-col>
+
+			</ion-row>
+			
+		</ion-card>
+
+		<ion-card *ngIf="showAddress">
+    	<ion-row>
+    		<ion-col col-12>
+	    		<h1>Add Address</h1><hr>
+
+	    		<ion-item>
+		        <ion-label color="dark" floating>Address Line I</ion-label>
+		        <ion-input type="text" clearInput #addressone></ion-input>
+		      </ion-item>
+	    		
+	    		<ion-item>
+		        <ion-label color="dark" floating>Address Line II</ion-label>
+		        <ion-input type="text" clearInput #addresstwo></ion-input>
+		      </ion-item>
+
+		      <ion-item>
+		        <ion-label color="dark" floating>Pincode</ion-label>
+		        <ion-input type="number" clearInput #pincode></ion-input>
+		      </ion-item>
+
+		      <ion-item>
+		        <ion-label color="dark" floating>City</ion-label>
+		        <ion-input type="text" clearInput #city value="Lucknow"></ion-input>
+		      </ion-item>
+
+		      <br><br>
+
+		      <button ion-button full round style="background-color: #1a1a1a;" (click)="addAddress(addressone.value,addresstwo.value,pincode.value,city.value)">Add Address</button><br>
+    			
+    		</ion-col>
+
+    	</ion-row>
+
+    	<br><br>
+
+    </ion-card>
+
+	</div>
+
+</ion-content>

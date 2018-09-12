@@ -1,0 +1,31 @@
+page-add-details {
+	.card-background-page {
+	    ion-card {
+	        padding: 10px;
+	        position: relative;
+	        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);  
+	    }
+	    input {
+	    	border-radius: 20px;
+	    	background-color: #eee;
+	    	border: none;
+	    	height: 30px;
+	    	padding-left: 10px;
+	    	width: 100%;
+	    	transition: 0.5s;
+	    }
+
+	    input:focus {
+	    	transition: 0.5s;
+		  	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);	
+	    }
+
+	    button {
+	    	margin-top: 0px;
+	    	height: 30px;
+	    	border-radius: 20px;
+	    	width: 100%;
+	    }
+
+	}
+}

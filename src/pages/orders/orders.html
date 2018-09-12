@@ -1,0 +1,140 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button (click)="goToHome()" ion-button icon-left clear small><ion-icon name="ios-arrow-back-outline"></ion-icon></button>
+    </ion-buttons>
+
+    <ion-title><b>orders</b></ion-title>
+  
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="card-background-page">
+
+		<ion-card *ngFor="let order of orders | async">
+			<ion-row>
+				<ion-col col-12>
+
+					<ion-row>
+						<ion-col col-7>
+							<h3><b>{{order.orderId}}</b></h3>
+						</ion-col>
+						<ion-col col-5 style="text-transform: uppercase;text-align: right;">
+							<h3 *ngIf="order.listStatus == 'Pending'"><b style="color:orange;">{{order.listStatus}} </b> <ion-icon (click)="showStatusInfo()" name="md-information-circle"></ion-icon></h3>
+							
+							<h3 *ngIf="order.listStatus == 'Confirmed'"><b style="color:blue;">{{order.listStatus}} </b> <ion-icon (click)="showStatusInfo()" name="md-information-circle"></ion-icon></h3>
+
+							<h3 *ngIf="order.listStatus == 'Approved'"><b style="color:teal;">{{order.listStatus}} </b> <ion-icon (click)="showStatusInfo()" name="md-information-circle"></ion-icon></h3>
+							
+							<h3 *ngIf="order.listStatus == 'Completed'"><b style="color:green;">{{order.listStatus}} </b> <ion-icon (click)="showStatusInfo()" name="md-information-circle"></ion-icon></h3>
+							
+							<h3 *ngIf="order.listStatus == 'Cancelled'"><b style="color:red;">{{order.listStatus}} </b> <ion-icon (click)="showStatusInfo()" name="md-information-circle"></ion-icon></h3>
+						</ion-col>
+					</ion-row>
+
+					<hr>
+
+					<div *ngIf="order.listStatus == 'Pending'">
+						<ion-row>
+							<ion-col col-12>
+								<table style="overflow-x: scroll;text-align: left;">
+									<thead>
+										<tr>
+											<th width="50%">Item Name</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let item of order.listContent;let i = index">
+											<td>{{item}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</ion-col>
+						</ion-row>
+
+					<hr>
+				
+					</div>
+
+					<div *ngIf="order.listStatus != 'Pending'">
+
+						<ion-row>
+							<ion-col col-12 style="overflow-x: scroll;">
+								<table style="width: 500px; overflow-x: scroll;text-align: left;">
+									<thead>
+										<tr>
+											<th width="50%">Item Name</th>
+											<th width="16.67%">M.R.P.</th> 
+											<th width="16.67%">Our Price</th>
+											<th width="16.67%" style="color: green;">Saving</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let item of order.listContent;let i = index">
+											<td>{{item}}</td>
+											<td style="color: #999;">₹ {{order.listPrice[i]}}</td>
+											<td>₹ {{order.listOurPrice[i]}}</td>
+											<td style="color: green;">₹ {{order.listPrice[i] - order.listOurPrice[i]}}</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<th><b>Total</b></th>
+											<th style="color: #999;">₹ {{order.priceTotal}}</th>
+											<th><b>₹ {{order.ourPriceTotal}}</b></th>
+											<th style="color: green;"><b>₹ {{order.savingTotal}}</b></th>
+										</tr>
+										<p style="color: #999;">Scroll left to see the complete table <ion-icon name="md-arrow-forward"></ion-icon></p>
+									</tfoot>
+								</table>
+							</ion-col>
+						</ion-row>
+						<hr>
+						<ion-row>
+							<ion-col col-6>
+								<h2>Total Price: <b>₹ {{order.ourPriceTotal}}</b></h2>
+							</ion-col>
+							<ion-col col-6>
+								<h2>Total Saving: <b style="color: green;">₹ {{order.priceTotal - order.ourPriceTotal}}</b></h2>
+							</ion-col>
+						</ion-row>
+					<hr>
+					</div>
+
+					<h2><b>Delivery Address</b></h2>
+					<h3>
+						{{order.userAddress}}
+					</h3>
+					<hr>
+					<ion-row>
+						<ion-col col-6>
+							<p>Ordered on <b>{{order.orderDate}}</b></p>
+						</ion-col>
+						<ion-col col-6 *ngIf="order.listStatus == 'Completed'">
+							<p *ngIf="order.deliveryDate">Delivered on <b>{{order.deliveryDate}}</b></p>
+						</ion-col>
+					</ion-row>
+					<hr>
+					<ion-row>
+						<ion-col col-12>
+							<p style="color: #999;">Please don't hesitate to <a href="">Contact us</a> if you have any queries.</p>
+						</ion-col>
+					</ion-row>
+				</ion-col>
+			<hr>
+			</ion-row>
+				<ion-row *ngIf="order.listStatus == 'Confirmed'">
+					<ion-col col-6>
+						<button ion-button full round style="background-color: #1a1a1a;" (click)="confirmOrder(order.key)">Confirm Order</button>
+					</ion-col>
+					<ion-col col-6>
+						<button ion-button full round style="background-color: #1a1a1a;" (click)="cancelOrder(order.key)">Cancel Order</button>
+					</ion-col>
+				</ion-row>
+		</ion-card>
+	</div>
+</ion-content>

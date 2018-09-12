@@ -1,0 +1,112 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button (click)="goBack()" ion-button icon-left clear small><ion-icon name="ios-arrow-back-outline"></ion-icon></button>
+    </ion-buttons>
+    <ion-title><b>add address</b></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="card-background-page">
+    <ion-card>
+    	<ion-row>
+    		<ion-col col-12>
+	    	  <h1>Personal Details</h1><hr>
+          <p>These are your Personal Details. You can change them from Edit Profile options in your Account page.</p>
+
+		      <ion-label color="dark">Full Name</ion-label>
+	    		<h2><b>{{userInfo.userName}}</b></h2>
+
+		      <ion-label color="dark">Email</ion-label>
+	    		<h2><b>{{userInfo.userEmail}}</b></h2>
+
+		      <ion-label color="dark">Mobile Number</ion-label>
+	    		<h2><b>{{userInfo.userNumber}}</b></h2>
+
+    		</ion-col>
+    	</ion-row>
+    </ion-card>
+
+    <ion-card text-wrap>
+    	<ion-row>
+    		<ion-col col-12>
+          <h1>Delivery Address</h1><hr>
+          <p>Please select your desired Delivery Address</p>
+    			<ion-list radio-group>
+				  <ion-item *ngFor="let address of address | async">
+				    <ion-label>{{address.userAddress}}</ion-label>
+				    <ion-radio [value]="address.key" (ionSelect)="addressSelected(address.key,address.userAddress)"></ion-radio>
+				  </ion-item>
+				</ion-list>
+    		</ion-col>
+    	</ion-row>
+    	<ion-row>
+    		<ion-col col-12>
+    		<button ion-button full round style="background-color: #1a1a1a;" (click)="addAddressButton()">Add Address</button>
+    		</ion-col>
+    	</ion-row>
+    </ion-card>
+
+    <ion-card *ngIf="showAddress">
+    	<ion-row>
+    		<ion-col col-12>
+	    		<h1>Address Details</h1><hr>
+
+	    		<ion-item>
+		        <ion-label color="dark" floating>Address Line I</ion-label>
+		        <ion-input type="text" clearInput #addressone></ion-input>
+		      </ion-item>
+	    		
+	    		<ion-item>
+		        <ion-label color="dark" floating>Address Line II</ion-label>
+		        <ion-input type="text" clearInput #addresstwo></ion-input>
+		      </ion-item>
+
+		      <ion-item>
+		        <ion-label color="dark" floating>Pincode</ion-label>
+		        <ion-input type="number" clearInput #pincode></ion-input>
+		      </ion-item>
+
+		      <ion-item>
+		        <ion-label color="dark" floating>City</ion-label>
+		        <ion-input type="text" clearInput #city value="Lucknow"></ion-input>
+		      </ion-item>
+
+		      <br><br>
+
+		      <button ion-button full round style="background-color: #1a1a1a;" (click)="addAddress(addressone.value,addresstwo.value,pincode.value,city.value)">Add Address</button><br>
+
+    			
+    		</ion-col>
+
+    	</ion-row>
+    	<br><br>
+
+    </ion-card>
+
+    <ion-card *ngIf="proceedButton">
+    	<ion-row>
+    		<ion-col col-12>
+		      <button ion-button full round style="background-color: #1a1a1a;" (click)="proceed()">Proceed</button>
+			</ion-col>
+    	</ion-row>
+    </ion-card>
+
+    <ion-card *ngIf="proceedButton">
+    	<ion-row>
+    		<ion-col col-12>
+		      <p>
+		      	<b>NOTE:</b> After you click <b>Proceed</b>, we will get back to you within half an hour with the complete order details, including the total cost price of the shopping list. After that you can confirm your order, and we'll deliver all the products to you within 3 hours.
+		      </p>
+			</ion-col>
+    	</ion-row>
+    </ion-card>
+
+  </div>
+
+</ion-content>

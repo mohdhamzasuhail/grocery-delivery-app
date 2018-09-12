@@ -1,0 +1,103 @@
+<ion-header>
+
+  <ion-toolbar>
+    <button class="home-menu" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar no-border class="search" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="account()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="card-background-page">  
+
+    <!-- <div class="card" *ngFor="let product of products | async">
+  
+      <ion-row>
+        <ion-col col-4>
+          <img src="{{product.productImageURL}}">
+        </ion-col>
+        <ion-col col-8>
+          
+          <p style="color: #999">{{product.productCompany}}</p>
+          <h2>{{product.productName}}</h2>
+          
+          <ion-item color="light">
+            <ion-label>Quantity</ion-label>
+            <ion-select style="height: 20px;">
+              <ion-option *ngFor="let q of product.quantity;let i =index" [value]="q" (ionSelect)="quantitySelected(i)">
+                {{q}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          
+          <ion-row>
+            <ion-col col-8>
+              <p style="color: #999">
+                MRP: 
+                <span *ngIf="quantityId == ''" style="text-decoration: line-through;">
+                  Rs {{product.productOP[0]}}
+                </span>
+                <span *ngIf="quantityId != ''" style="text-decoration: line-through;">
+                  Rs {{product.productOP[quantityId]}}
+                </span>
+              </p>
+              <h3>
+                <b *ngIf="quantityId == ''">
+                  Rs {{product.productDP[0]}} 
+                  <span style="color: green;">
+                    {{product.productDiscount[0]}}% Off
+                  </span>
+                </b>
+                <b *ngIf="quantityId != ''">
+                  Rs {{product.productDP[quantityId]}} 
+                  <span style="color: green;">
+                    {{product.productDiscount[quantityId]}}% Off
+                  </span>
+                </b>
+              </h3>
+            </ion-col>  
+            <ion-col col-4>
+              <button ion-button color="dark" (click)="addToCart(product.key)">ADD</button>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+      <hr>
+  
+    </div> -->
+    
+    <ion-card>
+      <div id="card-text" style="text-align: center;">
+        <h1>Welcome to <b style="font-family: 'Dancing Script', sans-serif;color: #F25632;">the banya</b></h1>
+        <h3>Delivering 15000+ Products with Assured Lowest Price</h3>
+      </div>
+    </ion-card>
+
+    <ion-card>
+      <img src="../../assets/imgs/bg-1.jpg" />
+    </ion-card>
+
+    <ion-card>
+      <img src="../../assets/imgs/bg-2.jpg" />
+    </ion-card>
+
+    <ion-card>
+      <img src="../../assets/imgs/bg-3.jpg" />
+    </ion-card>
+
+    <ion-card>
+      <img src="../../assets/imgs/bg-4.jpg" />
+    </ion-card>
+
+  </div>
+
+</ion-content>

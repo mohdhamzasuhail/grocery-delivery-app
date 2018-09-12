@@ -1,0 +1,52 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com.telerik.plugins.nativepagetransitions": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.thebanya.mainapp"
+    }
+  }
+}

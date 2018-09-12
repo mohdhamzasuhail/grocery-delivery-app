@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      <b>add details</b>
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="box">
+    <h1 style="text-align: center;">
+      <b>Add Details</b>
+    </h1>
+  
+    <ion-item>
+      <ion-label color="dark" floating>Name</ion-label>
+      <ion-input type="text" clearInput [(ngModel)]="account.userName"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label color="dark" floating>Mobile Number</ion-label>
+      <ion-input type="number" clearInput [(ngModel)]="account.userNumber"></ion-input>
+    </ion-item>
+    <br>
+    <br>
+  
+    <button ion-button class="btn-custom-1" (click)="register()">GO!</button>
+  </div>
+
+</ion-content>

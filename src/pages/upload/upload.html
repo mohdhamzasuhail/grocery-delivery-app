@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-toolbar>
+    <button class="home-menu" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar no-border class="search" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="account()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="card-background-page">
+    <ion-card>
+      <div class="heading">
+        <div>
+          <h1>
+            <b>Upload Shopping List </b> <span (click)="uploadShoppingListInfo()"><ion-icon name="information-circle"></ion-icon></span>
+          </h1>
+        </div>
+      </div>
+
+      <br>
+
+      <button ion-button full round style="background-color: #1a1a1a;" (click)=takePhoto()>Upload</button>
+      
+    </ion-card>
+
+    <ion-card>
+      <div class="heading">
+        <h1>
+          <b>Create Shopping List </b> <span (click)="createShoppingListInfo()"><ion-icon name="information-circle"></ion-icon></span>
+        </h1>
+      </div>
+      
+      <br>
+
+      <button ion-button full round style="background-color: #1a1a1a;" (click)=goToCreateShoppingListPage()>Create</button>
+
+    </ion-card>
+  </div>
+
+</ion-content>

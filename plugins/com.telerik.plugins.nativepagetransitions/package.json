@@ -1,0 +1,66 @@
+{
+  "_from": "com.telerik.plugins.nativepagetransitions",
+  "_id": "com.telerik.plugins.nativepagetransitions@0.6.5",
+  "_inBundle": false,
+  "_integrity": "sha1-Onr9vdOW/1fDUW8I8kiJReVIWx8=",
+  "_location": "/com.telerik.plugins.nativepagetransitions",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "com.telerik.plugins.nativepagetransitions",
+    "name": "com.telerik.plugins.nativepagetransitions",
+    "escapedName": "com.telerik.plugins.nativepagetransitions",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/com.telerik.plugins.nativepagetransitions/-/com.telerik.plugins.nativepagetransitions-0.6.5.tgz",
+  "_shasum": "3a7afdbdd396ff57c3516f08f2488945e5485b1f",
+  "_spec": "com.telerik.plugins.nativepagetransitions",
+  "_where": "/media/whip-scorpion/Local Disk/App Development/Ionic 3/banya",
+  "author": {
+    "name": "Telerik / Eddy Verbruggen",
+    "email": "eddyverbruggen@gmail.com",
+    "url": "https://github.com/EddyVerbruggen"
+  },
+  "bundleDependencies": false,
+  "cordova_name": "Native Page Transitions",
+  "deprecated": false,
+  "description": "Slide out the current page to reveal the next one. By a native transitions.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "issue": "https://github.com/Telerik-Verified-Plugins/WKWebView/issues",
+  "keywords": [
+    "Native transitions",
+    "Native page transitions",
+    "Slide",
+    "Flip",
+    "Drawer",
+    "Menu",
+    "Curl",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp8",
+    "cordova-windows"
+  ],
+  "license": "MIT",
+  "name": "com.telerik.plugins.nativepagetransitions",
+  "platforms": [
+    "ios",
+    "android",
+    "wp8",
+    "windows"
+  ],
+  "repo": "https://github.com/Telerik-Verified-Plugins/WKWebView.git",
+  "version": "0.6.5"
+}

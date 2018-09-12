@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button (click)="goToHome()" ion-button icon-left clear small><ion-icon name="ios-arrow-back-outline"></ion-icon></button>
+    </ion-buttons>
+    <ion-title><b>create</b></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-fab right bottom>
+    <button ion-fab color="dark"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="danger" (click)="deleteEverything()"><ion-icon name="md-trash"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+	<div class="card-background-page">
+    <ion-card>
+      
+      <ion-row *ngFor="let item of items | async">
+      
+        <ion-col col-8>
+            <input type="text" #updatetext [value]="item.item"><br><br>
+        </ion-col>
+
+        <ion-col col-2>
+          <button ion-button full style="background-color: #1a1a1a;" (click)="updateItem(item.key,updatetext.value)"><ion-icon name="md-refresh-circle"></ion-icon></button>
+        </ion-col>
+
+        <ion-col col-2>
+          <button ion-button full style="background-color: #1a1a1a;" (click)="deleteItem(item.key,item.item)"><ion-icon name="md-trash"></ion-icon></button>          
+        </ion-col>
+
+      <hr>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col col-10>
+          <input type="text" #itemName placeholder="Add Item Name & its information" onfocus="this.value=''"/>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button full round style="background-color: #1a1a1a;" (click)="addItem(itemName.value)"><ion-icon name="md-add"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row *ngIf="items">
+        <ion-col col-12>
+          <hr>
+          <button ion-button full round color="dark" (click)="confirmList()">Confirm List</button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+  </div>
+</ion-content>

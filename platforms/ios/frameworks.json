@@ -1,0 +1,14 @@
+{
+    "WebKit.framework": 1,
+    "libz.tbd": 1,
+    "ImageIO.framework": 1,
+    "CoreLocation.framework": 2,
+    "AVFoundation.framework": 2,
+    "libiconv.dylib": 1,
+    "CoreVideo.framework": 1,
+    "QuartzCore.framework": 1,
+    "CoreImage.framework": 1,
+    "AudioToolbox.framework": 1,
+    "Security.framework": 1,
+    "SystemConfiguration.framework": 1
+}

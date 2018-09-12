@@ -1,0 +1,19 @@
+page-products {
+	.card-background-page {
+        ion-card {
+            padding: 10px;
+            position: relative;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);  
+        }
+
+        img {
+        	height: 125px !important;
+        }
+        .select-text {
+            min-width: 50px;
+        }
+        ion-label {
+            max-width: auto;
+        }
+    }
+}
